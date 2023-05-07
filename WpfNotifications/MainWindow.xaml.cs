@@ -14,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfNotifications.Models;
+using WpfNotifications.Cmds;
+using System.Windows.Input;
 
 namespace WpfNotifications
 {
@@ -23,6 +25,12 @@ namespace WpfNotifications
     public partial class MainWindow : Window
     {
         private readonly IList<Car> _cars = new ObservableCollection<Car>();
+        private ICommand _changeColorCommand = null;
+        private ICommand _addCarCommand = null;
+
+        public ICommand ChangeColorCmd => _changeColorCommand ??= new ChangeColorCornmand();
+        public ICommand AddCarCmd => _addCarCommand ??= new AddCarCommand();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -46,10 +54,7 @@ namespace WpfNotifications
             cboCars.ItemsSource = _cars;
         }
 
-        private void btnChangeColor_Click(object sender, RoutedEventArgs e)
-        {
-            _cars.First(x => x.Id == ((Car)cboCars.SelectedItem)?.Id).Color = "Pink";
-        }
+        
 
         private void btnAddCar_Click(object sender, RoutedEventArgs e)
         {

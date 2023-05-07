@@ -74,12 +74,15 @@
                 <Button x:Name="btnAddCar"
                         Content="Add Car"
                         Margin="5,0,5,0"
-                        Padding="4,2" Click="btnAddCar_Click"/>
+                        Padding="4,2" 
+                        Command="{Binding AddCarCmd, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"
+                        CommandParameter="{Binding ElementName=cboCars, Path=ItemsSource}"/>
                 <Button x:Name="btnChangeColor"
                         Content="Change Color"
                         Margin="5,0,5,0"
                         Padding="4,2"
-                        Click="btnChangeColor_Click"/>
+                        Command="{Binding ChangeColorCmd, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"
+                        CommandParameter="{Binding ElementName=cboCars, Path=SelectedItem}"/>
             </StackPanel>
             <Label Grid.Column="0"
                    Grid.Row="5"
