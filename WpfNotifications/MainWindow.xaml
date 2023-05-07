@@ -38,6 +38,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
             <Label Grid.Column="0"
@@ -57,7 +58,7 @@
                    Content="Color"/>
             <TextBox Grid.Column="1"
                      Grid.Row="2"
-                     Text="{Binding Path=Color}"/>
+                     Text="{Binding Path=Color, UpdateSourceTrigger=PropertyChanged}"/>
             <Label Grid.Column="0"
                    Grid.Row="3"
                    Content="Pet Name"/>
@@ -73,12 +74,22 @@
                 <Button x:Name="btnAddCar"
                         Content="Add Car"
                         Margin="5,0,5,0"
-                        Padding="4,2"/>
+                        Padding="4,2" Click="btnAddCar_Click"/>
                 <Button x:Name="btnChangeColor"
                         Content="Change Color"
                         Margin="5,0,5,0"
-                        Padding="4,2"/>
+                        Padding="4,2"
+                        Click="btnChangeColor_Click"/>
             </StackPanel>
+            <Label Grid.Column="0"
+                   Grid.Row="5"
+                   Content="Is Changed"/>
+            <CheckBox Grid.Column="1" 
+                      Grid.Row="5"
+                      VerticalAlignment="Center"
+                      Margin="10,0,0,0"
+                      IsEnabled="False"
+                      IsChecked="{Binding Path=IsChanged}"/>
         </Grid>
     </Grid>
 </Window>
